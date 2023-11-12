@@ -4,7 +4,14 @@
 
 int NoiseResistant_GetWeightOfVector(BinaryVector* binary_vector)
 {
+    int weight = 0;
 
+    for (int i = 0; i < binary_vector->length; i++)
+    {
+        weight += binary_vector->vector[i];
+    }
+
+    return weight;
 }
 
 BinaryMatrix* NoiseResistant_CreateGeneratorMatrix(int d, int k, int n, int r)

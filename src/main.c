@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include "binary_matrix.h"
+#include "binary_vector.h"
+#include "noise_resistant.h"
 
 
 int main()
@@ -36,7 +38,18 @@ int main()
     BinaryMatrix* combined = BinaryMatrix_CombineMatrices(first_matrix, b);
     BinaryMatrix_Print(combined);
 
+    BinaryVector* vector = BinaryVector_Create(5);
+
+    int array[5] = {0,1,1,0,1};
+
+    BinaryVector_ImportFromArray(vector, array, 5);
+    BinaryVector_Print(vector);
+
+
+
     BinaryMatrix_Print(result);
+
+    printf("weight of vector: %d\n", NoiseResistant_GetWeightOfVector(vector));
     
     return 0;
 }

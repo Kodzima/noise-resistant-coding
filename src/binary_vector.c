@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 
 #include "binary_matrix.h"
 #include "binary_vector.h"
@@ -31,6 +32,18 @@ void BinaryVector_Delete(BinaryVector* target)
 
     free(target->vector);
     free(target);
+}
+
+void BinaryVector_Print(BinaryVector* target)
+{
+    if (target == NULL)
+        return;
+
+    for (int i = 0; i < target->length; i++)
+    {
+        printf("%d ", target->vector[i]);
+    }
+    printf("\n");
 }
 
 void BinaryVector_ImportFromArray(BinaryVector* target, int* source, size_t length)

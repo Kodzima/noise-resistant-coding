@@ -14,3 +14,5 @@ BinaryMatrix* BinaryMatrix_MultiplyMatrices(BinaryMatrix* first_matrix, BinaryMa
 int BinaryMatrix_Transpose(BinaryMatrix* binary_matrix);
 BinaryMatrix* BinaryMatrix_CombineMatrices(BinaryMatrix* first_matrix, BinaryMatrix* second_matrix);
 void BinaryMatrix_ImportFromArray(BinaryMatrix* binary_matrix, int* source, size_t size);
+BinaryMatrix* BinaryMatrix_CreateTransposed(BinaryMatrix* source);
+BinaryMatrix* BinaryMatrix_CombineMatrices(BinaryMatrix* first_matrix, BinaryMatrix* second_matrix);

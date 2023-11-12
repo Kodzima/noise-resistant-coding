@@ -115,9 +115,15 @@ BinaryMatrix* BinaryMatrix_CreateTransposed(BinaryMatrix* source)
     if (transposed == NULL)
         return NULL;
 
-    // TODO Зробити транспонування 
+    for (int row = 0; row < transposed->rows; row++)
+    {
+        for (int column = 0; column < transposed->columns; column++)
+        {
+            transposed->matrix[row * transposed->columns + column] = source->matrix[source->columns * column + row];
+        }
+    }
 
-    return 0;
+    return transposed;
 }
 
 BinaryMatrix* BinaryMatrix_CombineMatrices(BinaryMatrix* first_matrix, BinaryMatrix* second_matrix)
@@ -130,7 +136,21 @@ BinaryMatrix* BinaryMatrix_CombineMatrices(BinaryMatrix* first_matrix, BinaryMat
 
     BinaryMatrix* result = BinaryMatrix_Create(first_matrix->rows, first_matrix->columns + second_matrix->columns);
 
-    // TODO Зробити тут красиво
+    for (int row = 0; row < result->rows; row++)
+    {
+        for (int column = 0; column < first_matrix->columns; column++)
+        {
+            result->matrix[row * result->columns + column] = first_matrix->matrix[row * first_matrix->columns + column];
+        }
+    }
+
+    for (int row = 0; row < result->rows; row++)
+    {
+        for (int column = 0; column < second_matrix->columns; column++)
+        {
+            result->matrix[row * result->columns + column + first_matrix->columns] = second_matrix->matrix[row * second_matrix->columns + column];
+        }
+    }
 
     if (result == NULL)
         return NULL;

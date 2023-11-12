@@ -22,14 +22,14 @@ BinaryMatrix* BinaryMatrix_Create(unsigned rows, unsigned columns)
     return initialized;
 }
 
-void BinaryMatrix_Delete(BinaryMatrix* binary_matrix)
+void BinaryMatrix_Delete(BinaryMatrix* target)
 {
-    if (binary_matrix == NULL)
+    if (target == NULL)
     {
         return;
     }
-    free(binary_matrix->matrix);
-    free(binary_matrix);
+    free(target->matrix);
+    free(target);
 }
 
 void BinaryMatrix_ImportFromArray(BinaryMatrix* binary_matrix, int* source, size_t size)
@@ -49,7 +49,7 @@ void BinaryMatrix_ImportFromArray(BinaryMatrix* binary_matrix, int* source, size
     }
 }
 
-BinaryMatrix* BinaryMatrix_CreateUnitMatrix(const int size)
+BinaryMatrix* BinaryMatrix_CreateIdentityMatrix(const int size)
 {
     BinaryMatrix* binary_matrix = BinaryMatrix_Create(size, size);
     if (binary_matrix == NULL)
